@@ -30,3 +30,9 @@ variable "copy_to_sm" {
   type        = bool
   default     = false
 }
+
+variable "secret_id_suffix" {
+  description = "Whether a suffix should be appended to the secret_id."
+  type = bool
+  default = true
+}
