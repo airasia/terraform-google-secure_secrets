@@ -23,7 +23,7 @@ resource "google_project_service" "sm_api" {
 resource "google_secret_manager_secret" "secret_names" {
   for_each  = local.use_sm ? var.secrets : {}
   provider  = google-beta
-  secret_id = "${each.key}-sec2-${var.name_suffix}" # 'sec2' implies this secret was created using the SECureSECrets module
+  secret_id = var.secret_id_suffix ? "${each.key}-sec2-${var.name_suffix}" : "${each.key}" # 'sec2' implies this secret was created using the SECureSECrets module
   replication {
     user_managed {
       replicas { location = data.google_client_config.google_client.region }
