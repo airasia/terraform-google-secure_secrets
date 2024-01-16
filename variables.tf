@@ -30,3 +30,9 @@ variable "copy_to_sm" {
   type        = bool
   default     = false
 }
+
+variable "encrypt" {
+  description = "Whether to keep the encrypted secret while adding to secret manager or save it as plain text."
+  type        = bool
+  default     = false
+}

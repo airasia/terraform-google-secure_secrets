@@ -36,5 +36,5 @@ resource "google_secret_manager_secret_version" "secret_versions" {
   for_each    = google_secret_manager_secret.secret_names
   provider    = google-beta
   secret      = each.value.id
-  secret_data = var.secrets[each.key]
+  secret_data = var.encrypt ? var.secrets[each.key] : data.google_kms_secret.deciphered_secrets[each.key].plaintext
 }
